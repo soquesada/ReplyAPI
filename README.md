@@ -13,10 +13,11 @@ ReplyAPI
     │                   │   ├───Payment.java
     │                   │   ├───PaymentController.java
     │                   │   └───PaymentService.java
-    │                   └───user/
-    │                       ├───User.java
-    │                       ├───UserController.java
-    │                       └───UserService.java
+    │                   ├───user/
+    │                   │   ├───User.java
+    │                   │   ├───UserController.java
+    │                   │   └───UserService.java
+    │                   └───ReplyAPIApplication.java
     └───test/
         └───java/
             └───com/

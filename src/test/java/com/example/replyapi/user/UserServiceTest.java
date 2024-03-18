@@ -40,8 +40,8 @@ class UserServiceTest {
     }
 
     @Test
-    void registerUserShouldReturn400_PasswordLengthInvalid() {
-        User user = new User("ruby", "P", "ruby@example.com", "1990-01-01", "1234567891234567");
+    void registerUserShouldReturn400_PasswordIsNot8Characters() {
+        User user = new User("ruby", "Passw0r", "ruby@example.com", "1990-01-01", "1234567891234567");
         ResponseEntity<?> response = userService.registerUser(user);
 
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
@@ -74,6 +74,14 @@ class UserServiceTest {
     @Test
     void registerUserShouldReturn400_DobIsNotISO8601Format() {
         User user = new User("ruby", "Passw0rd!", "ruby@example.com", "1990-21-01", "1234567891234567");
+        ResponseEntity<?> response = userService.registerUser(user);
+
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+    }
+
+    @Test
+    void registerUserShouldReturn400_CardNumberIsNot16Digits() {
+        User user = new User("ruby", "Passw0rd!", "ruby@example.com", "1990-21-01", "123456789123456");
         ResponseEntity<?> response = userService.registerUser(user);
 
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
